@@ -109,14 +109,6 @@ public class Testing {
     public void whileLoop_2() {
         int m = 100000 - (100000 % 613);
         System.out.println(m);
-
-        /* Second decision - wrong
-        int m = 99999;
-        while (m % 613 != 0) {
-            m--;
-        }
-        System.out.println(m);
-         */
     }
 
     public void doWhileLoop() {
