@@ -1,9 +1,17 @@
 package sk.itsovy.Artem.Other;
 
+import com.sun.xml.internal.ws.api.ha.StickyFeature;
 import jdk.nashorn.internal.ir.CallNode;
+import jdk.nashorn.internal.parser.JSONParser;
+//import jdk.nashorn.internal.parser.Scanner;
+import java.time.YearMonth;
+import java.util.Scanner;
+import java.util.Date;
+
+import org.w3c.dom.ls.LSParser;
 
 public class Testing {
-    public void task_1() {
+    public void task_1() {  //All numbers from 1000 to 100000 that can be divide by 615
         for (int i = 1230; i < 10000; i++) {
             if (i % 615 == 0) {
                 System.out.println(i);
@@ -17,7 +25,7 @@ public class Testing {
         }
     }
 
-    public void task_3() {
+    public void task_3() { //Count all numbers from 10 to 100 that can be divided by 3
         int count = 0;
         for (int i = 10; i < 100; i++) {
             if (i % 3 == 0)
@@ -26,7 +34,7 @@ public class Testing {
         System.out.println(count);
     }
 
-    public void task_4() {
+    public void task_4() { //Count all divisions of number 1 million
         int j = 10000000, count = 0;
         for (int i = 1; i <= j; i++) {
             if (j % i == 0)
@@ -35,43 +43,45 @@ public class Testing {
         System.out.println(count);
     }
 
-    public void task_5() {
+    public void task_5() { //Calculate square
         int a = 45, b = 87, c = 37;
         double obJem = a * b * c, poverh = 2 * (a * b + b * c + a * c);
         System.out.println(obJem);
         System.out.println(poverh);
     }
 
-    public void task_6() {
+    public void task_6() { //Write all number from 10 to 2 with step - 0.5
         double j = 0.5;
-        for (int i = 10; i >= 2; i -= 0.5) {
+        for (int i = 10; i >= 2; i--) {
             System.out.println(i);
-            System.out.println(i - j);
+            if (i != 2) {
+                System.out.println(i - j);
+            }
         }
     }
 
-    public void task_7() {
+    public void task_7() { //Calculate 7!
         int num = 1;
-        for (int i = 7; i > 0; i--) {
+        for (int i = 1; i <= 7; i++) {
             num *= i;
         }
         System.out.println(num);
     }
 
-    public void task_8() {
+    public void task_8() { //Write all numbers from 100 to 1000 which can be divided by 27, can't be divided by 13 and uneven.
         for (int i = 100; i < 1000; i++) {
             if (i % 2 != 0 && i % 27 == 0 && i % 13 != 0)
                 System.out.println(i);
         }
     }
 
-    public void task_9() {
+    public void task_9() { //WTF
         for (int i = 0; i < 10000; i += 91)
             if (i % 2 == 0)
                 System.out.println(i);
     }
 
-    public void task_10() {
+    public void task_10() { //Write all number, which are polinoms
         for (int i = 10000; i < 99999; i++) {
             int a = i % 10, b = (i / 10) % 10, c = (i / 100) % 10, d = (i / 1000) % 10, e = (i / 10000) % 10;
             if (a == e && b == d)
@@ -112,49 +122,420 @@ public class Testing {
     }
 
     public void doWhileLoop() {
-        int value = 10;
-        int space = 0, star = 0;
-        for (int i = 1; i <= value; i++) {
-            space = value - i;  // 10 - 1
-            System.out.print(" ");  //left stage space
-            for (int j = 1; j <= space; j++) {
-                star = i * 2 - 1;  //1 * 2 - 1
-                //System.out.println(" ");
-                System.out.print(" "); // left stage space
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter the a, b and c: ");
+        double a = in.nextDouble(), b = in.nextDouble(), c = in.nextDouble();
+        double D = 0, x1 = 0, x2 = 0;
+        if (a == 0) {
+            System.out.println("a is 0. This is not the square reference!");
+        } else {
+            D = ((b * b) - (4 * a * c));
+            if (D < 0) {
+                System.out.println("D is smaller then 0. You didn't roots here!");
+            } else {
+                if (D == 0) {
+                    System.out.println("You have only one root!");
+                    x1 = (-b / (2 * a));
+                    System.out.println("The root is: " + x1);
+                } else {
+                    System.out.println("You have two roots!");
+                    x1 = ((-b + Math.sqrt(D)) / (2 * a));
+                    x2 = ((-b - Math.sqrt(D)) / (2 * a));
+                    System.out.println("The first root is: " + x1 + " | The second root is: " + x2);
+                }
             }
-            for (int m = 1; m <= star; m++){
-                //System.out.print("    ");
+        }
+    }
+
+
+
+        /* //Time per year
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter the number of the mouth: ");
+        int m = in.nextInt();
+        switch (m) {
+            case 12: {
+                //System.out.println("It's December");
+                //break;
+            }
+            case 1: {
+                //System.out.println("It's January");
+                //break;
+            }
+            case 2: {
+                System.out.println("It's Winter! Use warm clothes!");
+                break;
+            }
+            case 3: {
+                //System.out.println("It's winter! Use warm clothes");
+                //break;
+            }
+            case 4: {
+                //System.out.println("It's April");
+                //break;
+            }
+            case 5: {
+                System.out.println("It's Spring! Feels fresh!");
+                break;
+            }
+            case 6: {
+                //System.out.println("It's Spring! Feels fresh!");
+                //break;
+            }
+            case 7: {
+                //System.out.println("It's July");
+                //break;
+            }
+            case 8: {
+                System.out.println("It's Summer! All get to the beach!");
+                break;
+            }
+            case 9: {
+                //System.out.println("It's September");
+                //break;
+            }
+            case 10: {
+                //System.out.println("It's October");
+                //break;
+            }
+            case 11: {
+                System.out.println("It's Autumn! Watch out for your health!");
+                break;
+            }
+
+            default:
+                System.out.println("You selected the wrong number! Wait for 1 - 12, got: " + m);
+        }
+    }
+
+         */
+
+
+        /* //Full the squad with switch in two different ways
+        Scanner in = new Scanner(System.in);
+        int choice = 0, a = 0, b = 0;
+        System.out.println("-------------------------------");
+        System.out.println("1 - Input A and B and then show full squad");
+        System.out.println("2 - Input A and B and then show empty squad");
+        System.out.println("3 - Exit");
+        System.out.println("Enter your choice for actions: ");
+        choice = in.nextInt();
+        switch (choice) {
+            case 1: {
+                System.out.println("Enter the A: ");
+                a = in.nextInt();
+                System.out.println("Enter the B: ");
+                b = in.nextInt();
+                for (int i = 1; i <= a; i++) {
+                    for (int j = 1; j <= b; j++) {
+                        System.out.print(" * ");
+                    }
+                    System.out.println(" ");
+                }
+            }
+            case 2: {
+                System.out.println("Enter the A: ");
+                a = in.nextInt();
+                System.out.println("Enter the B: ");
+                b = in.nextInt();
+                for (int i = 1; i <= a; i++) {
+                    for (int j = 1; j <= b; j++) {
+                        if (i == 1 || i == a || j == 1 || j == b) {
+                            System.out.print(" * ");
+                        } else {
+                            System.out.print("   ");
+                        }
+                    }
+                    System.out.println(" ");
+                }
+                break;
+            }
+            case 3: {
+                System.out.println("Enter the A: ");
+                a = in.nextInt();
+                System.out.println("Enter the B: ");
+                b = in.nextInt();
+                System.out.println("Input the symbol: ");
+                String ch = in.nextLine();
+                for (int i = 1; i <= a; i++) {
+                    for (int j = 1; j <= b; j++) {
+                        if (i == 1 || i == a || j == 1 || j == b) {
+                            System.out.print(" * ");
+                        } else {
+                            System.out.print("   ");
+                        }
+                    }
+                    System.out.println(" ");
+                }
+                break;
+            }
+            case 4:{
+                System.out.println("Sad that you leave us so soon! Bye - bye!");
+                break;
+            }
+            default:
+                break;
+        }
+
+    }
+
+         */
+
+
+        /*
+        Scanner in = new Scanner(System.in);
+        boolean choice = true;
+        String answer = null;
+        int a = 0, b = 0;
+        while (choice) {
+            System.out.println("Enter the option of task (a or b): ");
+            String c = in.nextLine();
+            if (c.equals("a")) {
+                System.out.println("Enter the A: ");
+                a = in.nextInt();
+                System.out.println("Enter the B: ");
+                b = in.nextInt();
+                for (int i = 1; i <= a; i++) {
+                    for (int j = 1; j <= b; j++) {
+                        System.out.print(" * ");
+                    }
+                    System.out.println(" ");
+                }
+            } else {
+                if (c.equals("b")) {
+                    System.out.println("Enter the A: ");
+                    a = in.nextInt();
+                    System.out.println("Enter the B: ");
+                    b = in.nextInt();
+                    for (int i = 1; i <= a; i++) {
+                        for (int j = 1; j <= b; j++) {
+                            if (i == 1 || i == a || j == 1 || j == b) {
+                                System.out.print(" * ");
+                            } else {
+                                System.out.print("   ");
+                            }
+                        }
+                        System.out.println(" ");
+                    }
+                } else {
+                    System.out.println("You inputer wrong! Wait for the 'a' or 'b' and get: " + c);
+                }
+            }
+
+            System.out.println("Do you want to input different conditions? (Y/N): ");
+            in.nextLine();
+            answer = in.nextLine();
+            if (answer.equals("Y")) {
+                System.out.println("The program will start again...");
+            } else {
+                if (answer.equals("N")) {
+                    System.out.println("Thank you for visiting us. Have a nice day!");
+                    choice = false;
+                    //break;
+                } else {
+                    System.out.println("You imputed wrong! Waited for Y or N but got: " + answer + " The system will run from the start!");
+                }
+            }
+        }
+    }
+
+         */
+        /*
+        Scanner in = new Scanner(System.in);
+        final int pass = 5526;
+        final String login = "Tom & Jerry";
+        int rPass = 0;
+        String rLogin = null;
+
+        System.out.println("Please Enter your login: ");
+        rLogin = in.nextLine();
+        System.out.println("Please Enter your password: ");
+        rPass = in.nextInt();
+
+        if (rPass != pass && !rLogin.equals(login)) {
+            System.out.println("Sorry! You have entered wrong pass or login!");
+        } else {
+            System.out.println("Nice to meet you home, my Lord!");
+        }
+
+         */
+
+
+        /*int n = in.nextInt(), c, sum = 0;
+        while (n > 0){
+            c = n % 10;
+            sum += c;
+            n = n / 10;
+        }
+        System.out.println(sum);
+         */
+
+        /* //Summ of the all numbers in a row
+        int n = 82654139, c = 0, sum = 0;
+        while (n > 0) {
+            c = n % 10;
+            sum += c;
+            n = n / 10;
+        }
+        System.out.println(sum);
+         */
+
+        /* //Quad parallelogram
+        for (int i = 1; i <= 10; i++) {
+            for(int m = 10; m >= i; m--) {
+                System.out.print("  ");
+            }
+            for (int j = 1; j <= 10; j++) {
+                System.out.print(" # ");
+            }
+            System.out.println(" ");
+        }
+         */
+
+        /* // Full Diamond
+        for (int i = 1; i <= 10; i++){
+            for (int space = i; space <= 10; space++){
+                System.out.print("   ");
+            }
+            for (int stars = 1; stars <= i * 2 - 1; stars++){
                 System.out.print(" * ");
             }
             System.out.println(" ");
         }
-
-        // Full triangle
+        for (int i = 9; i >= 1; i--){
+            for (int space = i; space <= 10; space++){
+                System.out.print("   ");
+            }
+            for (int stars = 1; stars <= i * 2 - 1; stars++){
+                System.out.print(" * ");
+            }
+            System.out.println(" ");
+        }
+        ////////////////////////////////////
+        for (int i = 1; i <= 10; i++){
+            for (int space = i; space <= 10; space++){
+                System.out.print("   ");
+            }
+            for (int stars = 1; stars <= i * 2 - 1; stars++){
+                System.out.print(" * ");
+            }
+            System.out.println(" ");
+        }
+        for (int i = 10; i >= 1; i--){
+            for (int space = i; space <= 10; space++){
+                System.out.print("   ");
+            }
+            for (int stars = 1; stars <= i * 2 - 1; stars++){
+                System.out.print(" * ");
+            }
+            System.out.println(" ");
+        }
+         */
         /*
-        for (int i = 1; i <= 10; i++) {
-            for (int j = 10; j >= i; j--) {
-                System.out.print(" ");
-            }
-            for (int m = 1; m <= i; m++) {
-                System.out.print(" ");
+        for (int i = 10; i >= 1; i--) {
+            //System.out.print(" ");
+            for (int space = i; space <= 10; space++) {
+                System.out.print("   ");
             }
 
-            }
-            //System.out.println(" ");
-            for (int k = 1; k <= 10; k++) {
-                System.out.print(" ");
-            for (int z = 1; z <= k; z++) {
+            for (int j = i; j >= 1; j--) {
                 System.out.print(" * ");
             }
             System.out.println(" ");
         }
          */
 
-
-        //Full oblique quad
+        /* //Second Ex1 - backward piramid
+        for (int i = 10; i >= 1; i--) {
+            for (int j = i; j >= 1; j--) {
+                System.out.print(" * ");
+            }
+            System.out.println(" ");
+        }
+*/
+        /* // First Ex1 - straight piramid
+        for (int i = 1; i <= 10; i++){
+           for (int j = 1; j <= i; j++){
+               System.out.print(" * ");
+           }
+           System.out.println(" ");
+       }
+         */
         /*
-        for (int i = 1; i <= 5; i++){
-            for (int j = 10; j >= i; j--){
+        for (int i = 1; i <= 8; i++) { //rows
+            for (int k = 1; k <= 8; k++) { //space
+                if (i == 1 || i == 8 || k == 1 || k == 8) {
+                    System.out.print(" # ");
+                } else {
+                    System.out.print("   ");
+                }
+            }
+            System.out.println(" ");
+        }
+    }
+        // My version
+        for (int i = 1; i <= 10; i++) { //rows
+            //System.out.print(" * ");
+            for (int j = 1; j <= 10; j++) { //columns
+                if (i == 1 || i == 10 || j == 1 || j == 10){
+                    System.out.print(" * ");
+                } else {
+                    System.out.print("   ");
+                }
+                //System.out.print("   "); // left stage space
+            }
+            System.out.println(" ");
+        }
+         */
+    //Full triangle
+        /*
+        int x = 1;
+        for (int rows = 1; rows <= 7; rows++){
+            for(int space = 6; space >= rows; space--){
+                System.out.print("   ");
+            }
+            for (int stars = 1; stars <= rows * 2 - 1; stars++){ //1 * 2 - 1 = 1 // 2 * 2 - 1 = 3
+                System.out.print(" * ");
+            }
+            System.out.println(" ");
+            //x += 2;
+        }
+         */
+
+        /* Full triangle 2
+        int value = 10;
+        int space = 0, star = 0;
+        for (int i = 1; i <= value; i++) { //rows
+            space = value - i;  // 10 - 1 = 9  //9 - 1 = 8
+            for (int j = 1; j <= space + 1; j++) { //columns
+                star = i * 2 - 1;  //1 * 2 - 1 = 1 // 2 * 2 - 1 = 3
+                System.out.print("   "); // left stage space
+            }
+            for (int m = 1; m <= star; m++){ // star placers
+                System.out.print(" * ");
+            }
+            System.out.println(" ");
+        }
+        */
+
+/*      // Empty square with #
+        for (int i = 1; i <= 8; i++) { //rows
+            for (int k = 1; k <= 8; k++) { //space
+                if (i == 1 || i == 8 || k == 1 || k == 8) {
+                    System.out.print("#");
+                } else {
+                    System.out.print("   ");
+                }
+            }
+            System.out.println(" ");
+        }
+    }
+ */
+
+    //Full oblique quad
+        /*
+        for (int i = 1; i <= 5; i++){ //rows
+            for (int j = 10; j >= i; j--){ //colums
                 System.out.print(" ");
             }
             for (int k = 1; k <= 15; k++){
@@ -162,7 +543,7 @@ public class Testing {
             }
             System.out.println(" ");
         }
-         */
+*/
 
         /* !The same task, but in a different way from the teacher!
         for (int r = 1; r <= 10; r++) {
@@ -317,7 +698,7 @@ public class Testing {
         } while (5 * i < k);
 
          */
-    }
+
 
 /*
     public void iBanCalc(){
@@ -495,3 +876,4 @@ public class Testing {
          */
     }
 }
+

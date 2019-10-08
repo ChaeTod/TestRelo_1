@@ -7,8 +7,8 @@ import sk.itsovy.Artem.Other.Testing;
 import java.util.Date;
 
 public class Main {
-    public static void main(String[] args) {
-
+    public static void main(String[] args) { //Input parameters args - is a variable. String - variable and [] - is a field. This field needs to set an arguments to the start of the program.
+    //static - later, but it indicates
         Date year, month;
         Person person1 = new Person(); // Declare the new variable type Person in memory with empty arguments.
         Person person2 = new Person();
@@ -102,9 +102,9 @@ public class Main {
         }
 
         FreeClass storm1 = new FreeClass();
-        storm1.sayHello();
-        storm1.sayN(15);
-        System.out.println(" The binary numbers is - " +storm1.getRoundNum(5));
+        //storm1.sayHello();
+        storm1.sayN(1);
+        //System.out.println(" The binary numbers is - " +storm1.getRoundNum(5));
         //System.out.println(" The second chanse is - " +storm1.getNexCont(11));
 
         Testing story = new Testing();
@@ -120,9 +120,11 @@ public class Main {
         story.task_5();
 
          */
-        story.task_6();
+        //story.task_6();
+        //story.newTask();
+        //story.task_7();
         /*
-        story.task_7();
+
         story.task_8();
         story.task_9();
         //story.task_10();

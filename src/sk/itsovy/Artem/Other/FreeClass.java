@@ -8,7 +8,8 @@ public class FreeClass {
     public void sayN(int N) {
 
         while (N != 0) {
-            System.out.println("Hello to world from while loop!");
+            System.out.println("--------------------------------");
+            System.out.println("Hello user, I'm the quite bit program, but now I calculate only quadratic equation. Thank you!");
             N--;
         }
         /*

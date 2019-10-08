@@ -8,12 +8,23 @@ public class Car {
     private double carCost;
     private int carPet;
     private Person person;
+    private String brand;
+    //private int price;
+    private String lpn;
 
-    public Car(double carCost, String carModel, int carPet, String carNum){
+    public Car(double carCost, String carModel, int carPet, String carNum) { //construct
         this.carCost = carCost;
         this.carModel = carModel;
         this.carNum = carNum;
         this.carPet = carPet;
+    }
+
+    public void setBrand(String value) {
+        brand = value;
+    }
+
+    public String getBrand() {
+        return brand;
     }
 
     public Person getPerson() {
@@ -56,7 +67,7 @@ public class Car {
         this.carNum = carNum;
     }
 
-    public double tCarCost(){
+    public double tCarCost() {
         return carCost - ((2019 - carPet) * 800);
     }
 
