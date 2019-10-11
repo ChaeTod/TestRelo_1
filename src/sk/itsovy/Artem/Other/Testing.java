@@ -1,14 +1,20 @@
 package sk.itsovy.Artem.Other;
 
+import com.sun.xml.internal.ws.api.client.WSPortInfo;
 import com.sun.xml.internal.ws.api.ha.StickyFeature;
+import javafx.scene.SceneAntialiasing;
 import jdk.nashorn.internal.ir.CallNode;
 import jdk.nashorn.internal.parser.JSONParser;
 //import jdk.nashorn.internal.parser.Scanner;
 import java.time.YearMonth;
+import java.util.Random;
 import java.util.Scanner;
+
 import java.util.Date;
 
 import org.w3c.dom.ls.LSParser;
+
+import javax.print.attribute.standard.PrinterMakeAndModel;
 
 public class Testing {
     public void task_1() {  //All numbers from 1000 to 100000 that can be divide by 615
@@ -122,6 +128,252 @@ public class Testing {
     }
 
     public void doWhileLoop() {
+        //Random Password generator with different conditions
+        Random rnd = new Random();
+        Scanner in = new Scanner(System.in);
+        boolean lowFlag = false, topFlag = false, numFlag = false;
+        int nwm = 1, rCount;
+        String password = "";
+        System.out.println("1 - Generate the 6 digits password.");
+        System.out.println("2 - Generate the 10 of digits password. 5 are in top and 5 are in low cases.");
+        System.out.println("3 - Generate the 15 digits password. 5 are in top, 5 in low cases and 5 are numbers.");
+        System.out.println("4 - Generate the 10 digits password. All places are random.");
+        System.out.println("0 - Exit ");
+        int m = in.nextInt();
+        switch (m) {
+            case 1: {
+                for (int i = 1; i <= 6; i++) {
+                    nwm = rnd.nextInt(26) + 65;
+                    char letter = (char) nwm;
+                    password = password + "" + letter;
+                }
+                System.out.println("The generated password is: " + password);
+                break;
+            }
+
+            case 2: {
+                for (int i = 1; i <= 10; i++) {
+                    rCount = rnd.nextInt(10) + 1;
+                    if (rCount <= 5) {
+                        nwm = rnd.nextInt(26) + 65;
+                        char letter = (char) nwm;
+                        password = password + "" + letter;
+                    } else {
+                        nwm = rnd.nextInt(26) + 97;
+                        char letter = (char) nwm;
+                        password = password + "" + letter;
+                    }
+                }
+                System.out.println("The generated password is: " + password);
+                break;
+            }
+            case 3: {
+                for (int i = 1; i <= 15; i++) {
+                    rCount = rnd.nextInt(3);
+                    switch (rCount) {
+                        case 0: {
+                            topFlag = true;
+                            nwm = rnd.nextInt(26) + 65;
+                            char letter = (char) nwm;
+                            password = password + "" + letter;
+                            //if (Character.isUpperCase(letter))
+                            //topFlag = true;
+                            break;
+                        }
+                        case 1: {
+                            lowFlag = true;
+                            nwm = rnd.nextInt(26) + 97;
+                            char letter = (char) nwm;
+                            password = password + "" + letter;
+                            //if (Character.isLowerCase(letter))
+                            //lowFlag = true;
+                            break;
+                        }
+                        case 2: {
+                            numFlag = true;
+                            nwm = rnd.nextInt(10) + 48;
+                            char letter = (char) nwm;
+                            password = password + "" + letter;
+                            //if (Character.isDigit(letter))
+                            //numFlag = true;
+                            break;
+                        }
+                        default:
+                            break;
+                    }
+                }
+                if (topFlag && lowFlag && numFlag) {
+                    System.out.println("The generated password is: " + password);
+                } else {
+                    System.out.println("Ooops! Looks like you got extremely rare situation! You didn't get you password! Waited for at least one of each a-z, A-Z and 0-9. Got: " + topFlag + "  " + lowFlag + "  " + numFlag);
+                }
+                break;
+            }
+            case 4: {
+                for (int i = 1; i <= 15; i++) {
+                    rCount = rnd.nextInt(15) + 1;
+                    if (rCount <= 5) {
+                        nwm = rnd.nextInt(26) + 65;
+                        char letter = (char) nwm;
+                        password = password + "" + letter;
+                        if (Character.isUpperCase(letter))
+                            topFlag = true;
+                    } else {
+                        if (rCount <= 10) {
+                            nwm = rnd.nextInt(26) + 97;
+                            char letter = (char) nwm;
+                            password = password + "" + letter;
+                            if (Character.isLowerCase(letter))
+                                lowFlag = true;
+                        } else {
+                            nwm = rnd.nextInt(10) + 48;
+                            char letter = (char) nwm;
+                            password = password + "" + letter;
+                            if (Character.isDigit(letter))
+                                numFlag = true;
+                        }
+                    }
+                }
+                if (topFlag && lowFlag && numFlag) {
+                    System.out.println("The generated password is: " + password);
+                } else {
+                    System.out.println("Ooops! Looks like you got extremely rare situation! You didn't get you password!");
+                }
+                break;
+            }
+
+            default:
+                break;
+        }
+    }
+
+    public void forRepeat() {
+        //System.out.println("-----------------------");
+
+        for (int i = 1; i <= 10; i++) {
+            for (int j = i; j <= 10; j++) {
+                System.out.print("   ");
+            }
+            for (int k = 1; k <= i * 2 - 1; k++) {
+                System.out.print(" * ");
+
+            }
+            System.out.println(" ");
+        }
+        for (int i = 9; i >= 1; i--) {
+            for (int j = i; j <= 10; j++) {
+                System.out.print("   ");
+            }
+            for (int k = 1; k <= i * 2 - 1; k++) {
+                System.out.print(" * ");
+
+            }
+            System.out.println(" ");
+        }
+    }
+
+
+        /*
+        for (int i = 1; i <= 10; i++){
+            for (int k = i; k <= 10; k++){
+                System.out.print("  ");
+            }
+            for (int j = 1; j <= 10; j++){
+                if (i == 1 || i == 10 || j == 1 || j == 10) {
+                    System.out.print(" * ");
+                }else {
+                    System.out.print("   ");
+                }
+            }
+            System.out.println(" ");
+        }
+
+    }
+    */
+
+        /* //Find the closet to odd number with 4 digits
+        Random rnd = new Random();
+        //Scanner in = new Scanner(System.in);
+        //System.out.println("Please enter amount of iterations: ");
+        //int n = in.nextInt();
+        int i = 1, x = 1, b = 0;
+        do{
+            i++;
+            x = rnd.nextInt(4500) + 500;
+            x = 2 * x + 1; //1226 * 2 = 2452 + 1 = 2453
+            //b = 0;
+            for (int k = 2; k <= Math.sqrt(x); k++) {
+                if (x % k == 0) {
+                    //System.out.print(b+ " ");
+                    b++;
+                }
+            }
+            //System.out.println(" ");
+        } while (i != 1000);
+        //System.out.println(b);
+    }
+
+
+
+
+
+
+        /*
+        int x = 1;
+        for (int i = 10; i < 100; i++){
+            x = rnd.nextInt(90) + 10;
+            if (x % 2 == 0){
+                System.out.print(x + " ");
+            }
+        }
+        System.out.println(" ");
+        for (int i = 10; i < 100; i++){
+            x = rnd.nextInt(90) + 10;
+            if (x % 2 != 0){
+                System.out.print(x + " ");
+            }
+        }
+         */
+        /*
+        int i = 1, x = 0, y = 0;
+        while (i != 100){
+            x = 2 * (rnd.nextInt(45) + 5);
+            y = 2 * (rnd.nextInt(45) + 5) + 1;
+            System.out.print(x+ " ");
+            System.out.println(y+ " ");
+            i++;
+        }
+        System.out.println(" ");
+         */
+        /*
+        int a = rnd.nextInt(6) + 1, b, c;
+        do {
+            b = rnd.nextInt(6) + 1;
+            //c = rnd.nextInt(6) + 1;
+            //if (b == c)
+            //c = rnd.nextInt(6) + 1;
+        } while (a == b);
+        do {
+            c = rnd.nextInt(6) + 1;
+        }while(a == c || b == c);
+        System.out.println("The number is :" + a + " second num: " + b + " third numb: " + c);
+
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter the number of rows: ");
+        int n = in.nextInt();
+        for (int i = n; i >= 1; i--) {
+            for (int j = 10; j >= i; j--) {
+                System.out.print("   ");
+            }
+            for (int k = 1; k <= i * 2 - 1; k++) {
+                System.out.print(" * ");
+            }
+            System.out.println(" ");
+        }
+
+         */
+
+        /* //Calculate the quad references
         Scanner in = new Scanner(System.in);
         System.out.println("Enter the a, b and c: ");
         double a = in.nextDouble(), b = in.nextDouble(), c = in.nextDouble();
@@ -146,9 +398,7 @@ public class Testing {
             }
         }
     }
-
-
-
+   */
         /* //Time per year
         Scanner in = new Scanner(System.in);
         System.out.println("Enter the number of the mouth: ");
@@ -487,7 +737,7 @@ public class Testing {
             System.out.println(" ");
         }
          */
-    //Full triangle
+//Full triangle
         /*
         int x = 1;
         for (int rows = 1; rows <= 7; rows++){
@@ -532,7 +782,7 @@ public class Testing {
     }
  */
 
-    //Full oblique quad
+//Full oblique quad
         /*
         for (int i = 1; i <= 5; i++){ //rows
             for (int j = 10; j >= i; j--){ //colums
@@ -770,7 +1020,7 @@ public class Testing {
  */
 
 
-    //Old task 7
+//Old task 7
     /*
     public int task_7(int n){
         if (n == 0){

@@ -134,6 +134,7 @@ public class Main {
         //story.whileLoop_3();
         //story.iBanCalc();
         story.doWhileLoop();
+        story.forRepeat();
         //story.whileChange();
         //story.whileMSD();
         /*
