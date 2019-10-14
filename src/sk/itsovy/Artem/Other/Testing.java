@@ -143,11 +143,18 @@ public class Testing {
         }
     }
 
+    //Find the name and solve some examples with random numbers. Warning! All the numbers are integer!
     public void calculateYourSelf() {
         Random rnd = new Random();
         Scanner in = new Scanner(System.in);
         int x, y, answer;
+        String name = null;
+        System.out.println("Nice to meet you here stranger. What is your name?");
+        name = in.nextLine();
+        System.out.println(" ");
+        System.out.println("Hi " +name+ ". Welcome to my program! Here we solve some mathematical equations. You will have 10 of them for different actions. In the end you will know how many mistakes did you get. Get ready and good luck!");
         System.out.println("Let's find out what exercise we got:");
+        System.out.println(" ");
         int operation, rndCorrector;
         int i = 0, correct = 0, exNum = 0, fResult = 0;
         do {
@@ -225,7 +232,13 @@ public class Testing {
         } while (i != 10);
 
         fResult = (correct * 100) / 10;
+        System.out.println("The exercise is over, " +name+ ".");
         System.out.println("The mount of correct answers is: " + fResult + "%");
+        if (fResult >= 75){
+            System.out.println("You got biggest part of answers is right, " +name+ ". You calculate well, keep practicing!");
+        } else {
+            System.out.println("Too bad " +name+ ". You calculate not very good. Improve your skills!");
+        }
     }
 
     /**
