@@ -9,7 +9,7 @@ public class FreeClass {
 
         while (N != 0) {
             System.out.println("--------------------------------");
-            System.out.println("Hello user, I'm the quite big program, but now I only generates random passwords. Thank you!");
+            System.out.println("Hello user, I'm the quite big program, but now I only calculate some examples. Thank you!");
             N--;
         }
         /*
