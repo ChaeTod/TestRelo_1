@@ -127,6 +127,114 @@ public class Testing {
         System.out.println(m);
     }
 
+    /*
+        public String generatePassword(int n, boolean rule){
+            if (rule = true && n < 6 || n > 30) //checking the length of the password
+                n = 10;
+        }
+            */
+    public void randomCalculator() {
+        Random rnd = new Random();
+        int i = 0, x;
+        while (i != 100) {
+            x = (rnd.nextInt(4));
+            System.out.println(x + " ");
+            i++;
+        }
+    }
+
+    public void calculateYourSelf() {
+        Random rnd = new Random();
+        Scanner in = new Scanner(System.in);
+        int x, y, answer;
+        System.out.println("Let's find out what exercise we got:");
+        int operation, rndCorrector;
+        int i = 0, correct = 0, exNum = 0, fResult = 0;
+        do {
+            operation = rnd.nextInt(4);//0 1 2 3
+            rndCorrector = rnd.nextInt(2); //0 or 1 - 50/50
+            x = rnd.nextInt(90) + 10; // 10 to 99
+            y = rnd.nextInt(90) + 10; // 10 to 99
+            switch (operation * rndCorrector) {
+                case 0: {
+                    System.out.println("Random got: " + operation);
+                    System.out.println("You got summing!");
+                    exNum++;
+                    System.out.println("Your exercise #" + exNum + " is: ");
+                    System.out.println(x + " + " + y + " = ");
+                    answer = in.nextInt();
+                    if (answer == (x + y)) {
+                        System.out.println("Great! You're right!");
+                        correct++;
+                    } else {
+                        System.out.println("No! You wrong!");
+                    }
+                    break;
+                }
+                case 1: {
+                    System.out.println("Random got: " + operation);
+                    System.out.println("You got subtraction!");
+                    exNum++;
+                    System.out.println("Your exercise #" + exNum + " is: ");
+                    System.out.println(x + " - " + y + " = ");
+                    answer = in.nextInt();
+                    if (answer == (x - y)) {
+                        System.out.println("Great! You're right!");
+                        correct++;
+                    } else {
+                        System.out.println("No! You wrong!");
+                    }
+                    break;
+                }
+                case 2: {
+                    System.out.println("Random got: " + operation);
+                    System.out.println("You got division!");
+                    exNum++;
+                    System.out.println("Your exercise #" + exNum + " is: ");
+                    System.out.println(x + " / " + y + " = ");
+                    answer = in.nextInt();
+                    if (answer == (x / y)) {
+                        System.out.println("Great! You're right!");
+                        correct++;
+                        break;
+                    } else {
+                        System.out.println("No! You wrong!");
+                    }
+                    break;
+                }
+                case 3: {
+                    System.out.println("Random got: " + operation);
+                    System.out.println("You got multiplication!");
+                    exNum++;
+                    System.out.println("Your exercise #" + exNum + " is: ");
+                    System.out.println(x + " * " + y + " = ");
+                    answer = in.nextInt();
+                    if (answer == (x * y)) {
+                        System.out.println("Great! You're right!");
+                        correct++;
+                    } else {
+                        System.out.println("No! You wrong!");
+                    }
+                    break;
+                }
+                default:
+                    System.out.println("Random got: " + operation);
+                    break;
+            }
+            i++;
+        } while (i != 10);
+
+        fResult = (correct * 100) / 10;
+        System.out.println("The mount of correct answers is: " + fResult + "%");
+    }
+
+    /**
+     * author: Artem
+     * Date: 11.10.19
+     * -||-
+     * -||-
+     * -||-
+     */
     public void doWhileLoop() {
         //Random Password generator with different conditions
         Random rnd = new Random();
@@ -150,7 +258,6 @@ public class Testing {
                 System.out.println("The generated password is: " + password);
                 break;
             }
-
             case 2: {
                 for (int i = 1; i <= 10; i++) {
                     rCount = rnd.nextInt(10) + 1;
@@ -241,7 +348,6 @@ public class Testing {
                 }
                 break;
             }
-
             default:
                 break;
         }
@@ -312,11 +418,6 @@ public class Testing {
         } while (i != 1000);
         //System.out.println(b);
     }
-
-
-
-
-
 
         /*
         int x = 1;

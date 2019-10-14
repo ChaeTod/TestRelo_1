@@ -133,8 +133,10 @@ public class Main {
         //story.whileLoop_2();
         //story.whileLoop_3();
         //story.iBanCalc();
-        story.doWhileLoop();
-        story.forRepeat();
+        //story.doWhileLoop();
+        story.calculateYourSelf();
+        //story.randomCalculator();
+        //story.forRepeat();
         //story.whileChange();
         //story.whileMSD();
         /*
